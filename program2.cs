@@ -1,79 +1,37 @@
 ﻿using System;
-
-namespace mahnoorconsoleapp
+class Calculator
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        Console.WriteLine(" Calculator");
+        Console.Write("Enter first number: ");
+        double num1 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter an operator (+, -, *, /): ");
+        char op = Console.ReadLine()[0];
+        Console.Write("Enter second number: ");
+        double num2 = Convert.ToDouble(Console.ReadLine());
+
+        double result = 0;
+
+        switch (op)
         {
-            double num1, num2, result;
-            string opInput;
-            char operation;
-
-            Console.WriteLine("===== Simple Calculator =====\n");
-
-            // Input first number
-            Console.Write("Enter first number: ");
-            while (!double.TryParse(Console.ReadLine(), out num1))
-            {
-                Console.Write("Invalid input! Enter a valid number: ");
-            }
-
-            // Input operator
-            Console.Write("Enter an operator (+, -, *, /): ");
-            opInput = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(opInput))
-            {
-                Console.WriteLine("No operator entered!");
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/':
+                if (num2 != 0)
+                    result = num1 / num2;
+                else
+                {
+                    Console.WriteLine("Error: Cannot divide by zero!");
+                    return;
+                }
+                break;
+            default:
+                Console.WriteLine("Invalid operator!");
                 return;
-            }
-
-            operation = opInput[0]; // Take the first character
-
-            // Input second number
-            Console.Write("Enter second number: ");
-            while (!double.TryParse(Console.ReadLine(), out num2))
-            {
-                Console.Write("Invalid input! Enter a valid number: ");
-            }
-
-            // Switch case based on operator
-            switch (operation)
-            {
-                case '+':
-                    result = num1 + num2;
-                    Console.WriteLine($"\nResult: {num1} + {num2} = {result}");
-                    break;
-
-                case '-':
-                    result = num1 - num2;
-                    Console.WriteLine($"\nResult: {num1} - {num2} = {result}");
-                    break;
-
-                case '*':
-                    result = num1 * num2;
-                    Console.WriteLine($"\nResult: {num1} * {num2} = {result}");
-                    break;
-
-                case '/':
-                    if (num2 != 0)
-                    {
-                        result = num1 / num2;
-                        Console.WriteLine($"\nResult: {num1} / {num2} = {result}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nError: Division by zero is not allowed!");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("\nInvalid operator! Please use +, -, * or /");
-                    break;
-            }
-
-            Console.WriteLine("\nThank you for using the calculator!");
         }
+
+        Console.WriteLine("Result: {num1} {op} {num2} = {result}");
     }
 }
