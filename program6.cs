@@ -1,21 +1,23 @@
 ﻿using System;
-
-class FactorialCalculator
+namespace mahnoorconsoleapp
 {
-    static void Main()
+    class Factorialprogram
     {
-        Console.Write("Enter a number: ");
-        int n = Convert.ToInt32(Console.ReadLine());
-
-        int factorial = 1;
-        int i = 1;
-
-        while (i <= n)
+        static void Main()
         {
-            factorial *= i;  // Multiply factorial by i
-            i++;
-        }
+            Console.Write("Enter a number: ");
+            int n = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine($"Factorial of {n} is {factorial}");
+            int factorial = 1;
+            int i = 1;
+
+            while (i <= n)
+            {
+                factorial *= i;  
+                i++;
+            }
+
+            Console.WriteLine("Factorial of {n} is {factorial}");
+        }
     }
 }
